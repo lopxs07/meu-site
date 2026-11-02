@@ -1,0 +1,186 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-chocolate: var(--chocolate);
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Karla", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+  --background: oklch(0.94 0.022 78);
+  --foreground: oklch(0.27 0.02 40);
+  --card: oklch(0.965 0.015 80);
+  --card-foreground: oklch(0.27 0.02 40);
+  --popover: oklch(0.965 0.015 80);
+  --popover-foreground: oklch(0.27 0.02 40);
+  --primary: oklch(0.31 0.08 10);
+  --primary-foreground: oklch(0.94 0.022 78);
+  --secondary: oklch(0.7 0.07 65);
+  --secondary-foreground: oklch(0.27 0.02 40);
+  --muted: oklch(0.9 0.025 75);
+  --muted-foreground: oklch(0.45 0.03 40);
+  --accent: oklch(0.7 0.07 65);
+  --accent-foreground: oklch(0.27 0.02 40);
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.82 0.035 70);
+  --input: oklch(0.82 0.035 70);
+  --ring: oklch(0.31 0.08 10);
+  --chart-1: oklch(0.31 0.08 10); --chart-2: oklch(0.7 0.07 65); --chart-3: oklch(0.27 0.02 40); --chart-4: oklch(0.6 0.05 50); --chart-5: oklch(0.8 0.04 75);
+  --sidebar: oklch(0.27 0.02 40); --sidebar-foreground: oklch(0.94 0.022 78); --sidebar-primary: oklch(0.7 0.07 65); --sidebar-primary-foreground: oklch(0.27 0.02 40); --sidebar-accent: oklch(0.33 0.02 40); --sidebar-accent-foreground: oklch(0.94 0.022 78); --sidebar-border: oklch(0.4 0.02 40); --sidebar-ring: oklch(0.7 0.07 65);
+  --chocolate: oklch(0.27 0.02 40);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+@layer base {
+  body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 500; letter-spacing: -0.01em; }
+}
+@utility eyebrow { font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--secondary); }
+@utility fade-up { animation: fadeUp 0.9s cubic-bezier(.2,.7,.2,1) both; }
+@utility photo-placeholder {
+  background: radial-gradient(circle at 30% 20%, color-mix(in oklab, var(--secondary) 25%, transparent), transparent 60%), var(--muted);
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+@keyframes floatSlow { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.float-slow { animation: fadeUp .8s ease both, floatSlow 6s ease-in-out 1s infinite; }
+@supports (animation-timeline: view()) {
+  .reveal { animation: fadeUp linear both; animation-timeline: view(); animation-range: entry 0% cover 25%; }
+}
+@media (prefers-reduced-motion: reduce) { .float-slow, .reveal { animation: none; } }
+
+/* ---------- Motion: tabs, buttons, cards ---------- */
+:root {
+  --ease-out-soft: cubic-bezier(.2, .7, .2, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --shadow-lift: 0 14px 30px -18px color-mix(in oklab, var(--primary) 55%, transparent);
+}
+
+@keyframes tabEnter { from { opacity: 0; transform: translateY(10px) scale(.995); filter: blur(2px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes popIn { 0% { opacity: 0; transform: scale(.94); } 100% { opacity: 1; transform: none; } }
+@keyframes chipIn { 0% { transform: scale(.9); } 60% { transform: scale(1.06); } 100% { transform: scale(1); } }
+@keyframes pageEnter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+@utility tab-enter { animation: tabEnter .45s var(--ease-out-soft) both; }
+@utility page-enter { animation: pageEnter .5s var(--ease-out-soft) both; }
+@utility pop-in { animation: popIn .4s var(--ease-spring) both; }
+@utility stagger-in { animation: fadeUp .55s var(--ease-out-soft) both; }
+@utility press {
+  transition: transform .15s var(--ease-spring), background-color .25s, color .25s, border-color .25s, box-shadow .25s, opacity .25s;
+  &:active:not(:disabled) { transform: scale(.94); }
+}
+@utility lift-card {
+  transition: transform .3s var(--ease-out-soft), box-shadow .3s, border-color .3s;
+  &:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); border-color: color-mix(in oklab, var(--primary) 35%, var(--border)); }
+}
+@utility chip {
+  border-radius: 9999px; border: 1px solid var(--border); padding: .375rem 1rem; font-size: .875rem;
+  color: color-mix(in oklab, var(--foreground) 80%, transparent);
+  &:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
+}
+@utility chip-active {
+  background-color: var(--primary); color: var(--primary-foreground); border-color: var(--primary);
+  box-shadow: var(--shadow-lift);
+  animation: chipIn .35s var(--ease-spring);
+  &:hover { color: var(--primary-foreground); }
+}
+@utility upload-drop {
+  outline: 1px dashed color-mix(in oklab, var(--secondary) 70%, transparent); outline-offset: -1px; cursor: pointer;
+  transition: outline-color .2s, transform .25s var(--ease-out-soft);
+  &:hover { outline-color: var(--primary); }
+  &:active { transform: scale(.98); }
+}
+@utility upload-drop-active { outline: 2px solid var(--primary); transform: scale(1.02); }
+@utility upload-overlay {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4rem;
+  background: color-mix(in oklab, var(--chocolate) 55%, transparent); color: var(--primary-foreground);
+  opacity: 0; transition: opacity .25s;
+  .group:hover &, .group:focus-visible & { opacity: 1; }
+}
+@utility preview-frame { box-shadow: var(--shadow-lift); }
+
+@layer base {
+  a, button { transition: color .25s, background-color .25s, border-color .25s, opacity .25s, transform .15s var(--ease-spring); }
+  button:active:not(:disabled), a.rounded-full:active { transform: scale(.95); }
+}
+
+.nav-underline { position: relative; }
+.nav-underline::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: var(--primary);
+  transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease-out-soft);
+}
+.nav-underline:hover::after, .nav-underline[data-status="active"]::after { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-enter, .page-enter, .pop-in, .stagger-in, .chip-active { animation: none; }
+}

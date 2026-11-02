@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1793485632149,
+      "tag": "0000_bendita_schema_and_catalog",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793485694055,
+      "tag": "0001_admin_reads_product_images",
+      "breakpoints": true
+    }
+  ]
+}

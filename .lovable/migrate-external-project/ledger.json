@@ -1,0 +1,13 @@
+[
+  {"capability": "code", "source": "uploaded Lovable project ZIP (Bendita Cremeria)", "outcome": "migrate", "status": "done", "next_action": "-"},
+  {"capability": "schema", "source": "drizzle/migrations 0000-0004", "outcome": "migrate", "status": "done", "next_action": "-"},
+  {"capability": "records: catalog (categories, products, store settings)", "source": "seed in migration 0000", "outcome": "migrate", "status": "done", "next_action": "-"},
+  {"capability": "records: orders, flavors and later catalog edits", "source": "old backend, no export attached", "outcome": "migrate", "status": "pending", "next_action": "ask user for CSV export or skip"},
+  {"capability": "auth identities (admin)", "source": "admin granted by email trigger for owner email", "outcome": "migrate", "status": "pending", "next_action": "owner adds account in Users panel, then uses 'primeiro acesso' to set password"},
+  {"capability": "authorization", "source": "user_roles + has_role RLS", "outcome": "migrate", "status": "done", "next_action": "-"},
+  {"capability": "uploaded file bytes", "source": "product-images bucket (private; public buckets blocked by workspace)", "outcome": "migrate", "status": "done", "next_action": "old photos were not exported; re-upload"},
+  {"capability": "new: product image upload (Fotos tab + product form)", "source": "user request", "outcome": "build", "status": "done", "next_action": "verify signed in"},
+  {"capability": "new: home page tab", "source": "user request", "outcome": "build", "status": "done", "next_action": "verify signed in"},
+  {"capability": "new: animations", "source": "user request", "outcome": "build", "status": "done", "next_action": "-"},
+  {"capability": "verification", "source": "-", "outcome": "verify", "status": "partial", "next_action": "public pages verified; admin upload not exercised (no admin account yet)"}
+]

@@ -1,0 +1,13 @@
+# Roadmap
+- [x] Etapa 1: Projeto importado e preservado (visual, cardápio, produto, carrinho, checkout, contato)
+- [x] Etapa 2: Lovable Cloud — tabelas, regras de acesso, administradores, catálogo inicial importado
+- [x] Etapa 3: Painel /admin (login, pedidos em tempo real, som, produtos, categorias, sabores, configurações, relatórios; fotos por link)
+- [ ] Etapa 4: Cardápio público lendo do banco + pedido salvo no servidor antes do WhatsApp
+- [ ] Etapa 5: Fotos realistas por produto, revisão celular/tablet, preparação Vercel
+- [ ] WhatsApp e horários da loja (preenchidos pelo dono no painel)
+- [x] Projeto movido para o Lovable Cloud (estrutura + cardápio inicial)
+- [x] Aba Fotos (envio de imagem dos produtos) + foto no formulário de produto
+- [x] Aba Página inicial (textos, foto principal, prévia)
+- [x] Animações em abas, botões e troca de páginas
+- [ ] Conta do administrador: criar em Usuários (aguarda o dono)
+- [ ] Pedidos antigos: aguardando exportação ou "pular"
